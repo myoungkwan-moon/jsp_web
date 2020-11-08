@@ -1,0 +1,95 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="bbs.BbsDAO"%>
+<%@ page import="bbs.Bbs"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="java.util.ArrayList"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width"  >
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
+
+<title>재단법인 웹사이트</title>
+</head>
+<body> 
+
+
+	<%
+		String userID = null;
+		if ((String) session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		} 
+	%>
+	
+	
+    <!-- 메뉴의 리스트 -->	
+    <jsp:include page="jsp/menu_common.jsp" flush="true">    	
+	<jsp:param name="userID" value="<%=userID%>"/>
+	</jsp:include>
+	
+	
+	
+    <!-- aside -->
+<div id="content-wrap">
+  <aside>
+    <ul>
+      <li><a href="greetings.jsp" class="active">인사말</a></li>
+      <li><a href="establishment.jsp">설립목적</a></li>
+      <li><a href="history.jsp" class="active">연혁</a></li>
+      <li><a href="majorBussiness.jsp">주요사업</a></li>
+      <li><a href="audit.jsp">결산</a></li>
+      <li><a href="executives.jsp">임원</a></li>
+      <li><a href="map.jsp">찾아오시는길</a></li> 
+      
+    </ul>
+  </aside>
+  <section>
+    <article id="greetings">
+      <h1>인사말</h1>
+      <p>	
+      1-----------------------------------------------------------------------------------------------------------
+      <br>
+      2-----------------------------------------------------------------------------------------------------------
+      3-----------------------------------------------------------------------------------------------------------
+      4-----------------------------------------------------------------------------------------------------------
+      5-----------------------------------------------------------------------------------------------------------
+      6-----------------------------------------------------------------------------------------------------------
+      
+감사합니다.
+</p>
+    </article>
+  </section>
+<!-- end of content-wrap   -->
+</div>
+	
+	
+	
+      <!-- 인사말 -->	
+	
+	<div>
+	
+ 
+	
+	<p>
+	
+
+	
+	</p>
+	
+	
+	
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>
