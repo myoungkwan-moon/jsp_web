@@ -11,8 +11,7 @@
 <meta name="viewport" content="width=device-width"  >
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
-<title>재단법인 웹사이트</title>
+ 
 
 </head>
 <body>
@@ -37,10 +36,8 @@
     <ul>
       <li><a href="greetings.jsp">인사말</a></li>
       <li><a href="establishment.jsp" class="active">설립목적</a></li>
-      <li><a href="history.jsp">연혁</a></li>
-      <li><a href="majorBussiness.jsp">주요사업</a></li>
-      <li><a href="audit.jsp">결산</a></li>
-      <li><a href="executives.jsp">임원</a></li>
+      <li><a href="history.jsp">연혁</a></li> 
+      <li><a href="audit.jsp">결산 공시</a></li> 
       <li><a href="map.jsp">찾아오시는길</a></li> 
       
      

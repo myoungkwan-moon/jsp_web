@@ -22,6 +22,11 @@
 </head>
 <body>
 	<%
+		String userID = null;
+		if ((String) session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		}			
+	
 		int pageNumber = 1;
 		if(request.getParameter("pageNumber")!= null){
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
@@ -32,18 +37,38 @@
     <div><jsp:include page="jsp/menu_common.jsp" flush="false" /></div>
     	
     	
-    
+          <!-- 검색 메뉴 -->	 
+<div id="content-wrap">
+  <aside>
+    <ul>
+      <li><a href="notice.jsp">공지 게시판</a></li> 
+      <li><a href="bbs.jsp"  class="active">자유 게시판</a></li>
+      
+      
+		<!-- 회원 전용 메뉴  로그인시만 표시-->
+		<%
+		if (userID != null) {
+		   %> 
+			<li><a href="bbsMember.jsp">회원 게시판</a></li>
+		<%
+		}
+		%>
+		
+    </ul>
+  </aside>
+  <section> 	 
+  		
     <!-- 게시판 리스트 -->		
-    	
-	<div class="container">
+   
+    <article id="bbs"> 	 
 		<div class="row">
 			<table class="table table-striped"
-				style="text-align: center; border: 1px solid #dddddd;">
+				style="text-align: right; border: 1px solid #dddddd;">
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center">번호</th>
-					<th style="background-color: #eeeeee; text-align: center">제목</th>
-					<th style="background-color: #eeeeee; text-align: center">작성자</th>
-					<th style="background-color: #eeeeee; text-align: center">date</th>
+					<th style="background-color: #eeeeee; text-align: right">번호</th>
+					<th style="background-color: #eeeeee; text-align: right">제목</th>
+					<th style="background-color: #eeeeee; text-align: right">작성자</th>
+					<th style="background-color: #eeeeee; text-align: right">작성일</th>
 				</tr>
 					<%
 						BbsDAO bbsDAO = new BbsDAO();
@@ -73,8 +98,9 @@
 				}
 			%>
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
-		</div>
-	</div>
+		</div> 
+	</article>
+	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>

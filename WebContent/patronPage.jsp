@@ -35,21 +35,17 @@
 <div id="content-wrap">
   <aside>
     <ul>
-      <li><a href="greetings.jsp">인사말</a></li>
-      <li><a href="establishment.jsp" class="active">설립목적</a></li>
-      <li><a href="history.jsp">연혁</a></li>
-      <li><a href="majorBussiness.jsp">주요사업</a></li>
-      <li><a href="audit.jsp">결산</a></li>
-      <li><a href="executives.jsp">임원</a></li>
-      <li><a href="map.jsp">찾아오시는길</a></li> 
+      <li><a href="patronPage.jsp" class="active">후원자 명단</a></li>
+      <li><a href="patronPage.jsp">월별 후원자 명단</a></li>
+      <li><a href="patronPage.jsp">온라인 (정기) 후원</a></li> 
       
      
     </ul>
   </aside>
   <section>
   
-    <article id="establishment">
-      <h1>설립목적</h1>
+    <article id="patronPage">
+      <h1>후원자 명단</h1>
       <p>	                                       
 <br>
   		

@@ -15,7 +15,7 @@ public class UserDAO {
 	public UserDAO() {
 		try {
 			String dbURL="jdbc:mysql://localhost:3306/bbs?serverTimezone=UTC";
-			String dbID="root";
+			String dbID="siteadmin";
 			String dbPassword="killer";
 			Class.forName("com.mysql.jdbc.Driver");
 		    conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
@@ -47,7 +47,7 @@ public class UserDAO {
 	}
 	
 	public int join(User user) {
-		 String SQL = "insert into USER (userID, userPassword, userName, userGender, userEmail) values(?,?,?,?,?)";
+		 String SQL = "insert into USER (userID, userPassword, userName, userGender, userEmail,userPhoneNumber) values(?,?,?,?,?,?)";
 		 //String SQL = "INSERT INTO USER VALUES (?,?,?,?,?)";
 		 //insert into dbo.[USER](userID, userPassoword, userName, userGender, userEmail)values('gildong', '123456', 'È«±æµ¿', '³²ÀÚ', 'gildong@naver.com');
 		 //SELECT userPassword FROM dbo.[USER] WHERE userID =  'sdfsdf';
@@ -60,6 +60,7 @@ public class UserDAO {
 			  pstmt.setString(3,  user.getUserName());
 			  pstmt.setString(4,  user.getUserGender());
 			  pstmt.setString(5,  user.getUserEmail());
+			  pstmt.setString(6,  user.getUserPhoneNumber());
 			  
 			  return pstmt.executeUpdate();
 			  

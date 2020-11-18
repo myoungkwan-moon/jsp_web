@@ -52,61 +52,50 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">재단소개 <span class="caret"></span></a>	
           <ul class="dropdown-menu">	
             <li><a href="greetings.jsp">인사말</a></li>	
-            <li><a href="#">설립목적</a></li>	
+            <li><a href="establishment.jsp">설립목적</a></li>	
             <li><a href="history.jsp">연혁</a></li>		
-            <li><a href="#">주요사업</a></li>	
-            <li><a href="#">사업현황</a></li>	
-            <li><a href="#">결산</a></li>	
-            <li><a href="#">임원</a></li>	
-            <li><a href="#">찾아오시는길</a></li>
+            <li><a href="audit.jsp">결산 공시</a></li>	
+            <li><a href="map.jsp">찾아오시는길</a></li>
           </ul>	
         <li class="dropdown">	
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 주요사업 <span class="caret"></span></a>	
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 장학사업 <span class="caret"></span></a>	
           <ul class="dropdown-menu">		
-            <li><a href="#">장학사업</a></li>	
-            <li><a href="#">육성사업</a></li>
-            <li role="separator" class="divider"></li>	
-            <li><a href="#">해외 장학사업</a></li>	
-            <li role="separator" class="divider"></li>	
-            <li><a href="#">해외 육성사업</a></li>	
-          </ul>	
-        </li>		
-        <li class="dropdown">	
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">후원안내 <span class="caret"></span></a>	
-          <ul class="dropdown-menu">	
-            <li><a href="#">후원자 명단</a></li>
-            <li><a href="#">월별 후원자 명단</a></li>		
-            <li><a href="#">온라인 (정기) 후원</a></li>	
-            <li role="separator" class="divider"></li>	
-            <li><a href="#">개인정보 처리 방침</a></li>	
+            <li><a href="scholarshipFund.jsp">장학사업</a></li>	
+            <li><a href="fosterFund.jsp">육성사업</a></li>	
           </ul>	
         </li>		
         <li class="dropdown">	
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">게시판  <span class="caret"></span></a>	
           <ul class="dropdown-menu">	
-            <li><a href="#">공지사항</a></li>		
+            <li><a href="notice.jsp">공지사항</a></li>	
             <li role="separator" class="divider"></li>	
-            <li><a href="#">장학생 모임</a></li>	
+            <li><a href="bbs.jsp">자유 게시판</a></li>		
+            
+            <!-- 회원 전용 메뉴  로그인시만 표시-->
+          	<%
+			if (userID != null) {
+		    %>
             <li role="separator" class="divider"></li>	
-            <li><a href="bbs.jsp">자유 게시판</a></li>	
+            <li><a href="bbsMember.jsp">회원 게시판</a></li>
+            <%
+			}
+			%>
+            	
           </ul>	
         </li>	
         <li class="dropdown">	
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">자료실 <span class="caret"></span></a>	
           <ul class="dropdown-menu">	
-            <li><a href="#">문서 자료</a></li>		
-            <li><a href="#">사진 자료 </a></li>	
-            <li><a href="#">동영상 자료</a></li>	
-            <li role="separator" class="divider"></li>	
-            <li><a href="#">장학생 독후감 자료</a></li>	
+            <li><a href="docData.jsp">문서 자료</a></li>		
+            <li><a href="picData.jsp">사진 자료 </a></li>	
+            <li><a href="movData.jsp">동영상 자료</a></li>	
           </ul>	
         </li>
         <li class="dropdown">	
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">재단장 소개 <span class="caret"></span></a>	
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">설립자 소개 <span class="caret"></span></a>	
           <ul class="dropdown-menu">	
-            <li><a href="#">이력</a></li>	
-            <li><a href="#">사진자료</a></li>	
-            <li><a href="#">재단장 소개서</a></li>		
+            <li><a href="foundationPresident.jsp">이력</a></li>	
+            <li><a href="foundationPresidentPic.jsp">사진자료</a></li>			
           </ul>	
         </li>
       </ul>		 
@@ -132,7 +121,12 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false">회원관리<span class="caret"></span></a>
+				aria-expanded="false">
+	
+					ID : <%=userID%>
+				
+				
+				<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="logoutAction.jsp">로그아웃</a></li>
 				</ul></li>

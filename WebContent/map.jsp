@@ -11,8 +11,7 @@
 <meta name="viewport" content="width=device-width"  >
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
- <title>구글지도 회사 위치</title>
+ 
 
 </head>
 <body onload="initialize()"> 
@@ -37,13 +36,11 @@
 <div id="content-wrap">
   <aside>
     <ul>
-      <li><a href="greetings.jsp" class="active">인사말</a></li>
-      <li><a href="history.jsp">설립목적</a></li>
-      <li><a href="history.jsp">연혁</a></li>
-      <li><a href="#">주요사업</a></li>
-      <li><a href="#">결산</a></li>
-      <li><a href="#">임원</a></li>
-      <li><a href="#">찾아오시는길</a></li> 
+      <li><a href="greetings.jsp">인사말</a></li>
+      <li><a href="establishment.jsp">설립목적</a></li>
+      <li><a href="history.jsp">연혁</a></li> 
+      <li><a href="audit.jsp">결산</a></li> 
+      <li><a href="map.jsp"  class="active">찾아오시는길</a></li> 
       
     </ul>
   </aside>
@@ -58,8 +55,9 @@
 	
 	
 	
-      <!-- 인사말 -->	
+      <!-- 지도 정보 -->	
 	
+		<article id="map">
 	<div>
 	
  
@@ -69,7 +67,6 @@
 
 	
 	</p>
-	
 	 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
  <script>
   function initialize() {
@@ -88,7 +85,7 @@
   }
   
  </script>
-	
+	</article>	
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

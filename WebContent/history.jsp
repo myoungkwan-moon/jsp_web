@@ -38,9 +38,7 @@
       <li><a href="greetings.jsp">인사말</a></li>
       <li><a href="establishment.jsp">설립목적</a></li>
       <li><a href="history.jsp" class="active">연혁</a></li>
-      <li><a href="majorBussiness.jsp">주요사업</a></li>
       <li><a href="audit.jsp">결산</a></li>
-      <li><a href="executives.jsp">임원</a></li>
       <li><a href="map.jsp">찾아오시는길</a></li> 
      
     </ul>

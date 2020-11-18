@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="bbs.BbsDAO"%>
-<%@ page import="bbs.Bbs"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -35,7 +33,7 @@
 <div id="content-wrap">
   <aside>
     <ul>
-      <li><a href="docData">문서 자료</a></li>
+      <li><a href="docData.jsp">문서 자료</a></li>
       <li><a href="picData.jsp">사진 자료</a></li>
       <li><a href="movData.jsp"  class="active">동영상 자료</a></li> 
      
@@ -44,7 +42,7 @@
   <section>
   
     <article id="docData">
-      <h1>동영상  자료/h1>
+      <h1>동영상 자료/h1>
       <p>	                                       
 <br>
   		
