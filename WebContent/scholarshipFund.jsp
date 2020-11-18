@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="bbs.BbsDAO"%>
+<%@ page import="bbs.Bbs"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -11,9 +13,8 @@
 <link rel="stylesheet" href="css/custom.css">
 
 <title>재단법인 웹사이트</title>
-
 </head>
-<body>
+<body> 
 
 
 	<%
@@ -29,56 +30,51 @@
 	<jsp:param name="userID" value="<%=userID%>"/>
 	</jsp:include>
 	
-      <!-- 검색 메뉴 -->	 
+	
+	
+    <!-- aside -->
 <div id="content-wrap">
   <aside>
     <ul>
-      <li><a href="docData.jsp" class="active">문서 자료</a></li>
-      <li><a href="picData.jsp">사진 자료</a></li>
-      <li><a href="movData.jsp">동영상 자료</a></li> 
-     
+      <li><a href="scholarshipFund.jsp" class="active">장학사업</a></li>	
+      <li><a href="fosterFund.jsp">육성사업</a></li>	
+      
     </ul>
   </aside>
   <section>
-  
-    <article id="docData">
-      <h1>문서 자료/h1>
-      <p>	                                       
-<br>
-  		
-------------------------------------------------------
-<br>
-
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-<br>
-
-------------------------------------------------------
-<br>
-
-------------------------------------------------------
-<br>
-
-------------------------------------------------------
-
-
-
-    </p>
+    <article id="scholarship">
+      <h1>장학사업 </h1>
+      <p>	
+      1-----------------------------------------------------------------------------------------------------------
+      <br>
+      
+     </p>
     </article>
- 
   </section>
 <!-- end of content-wrap   -->
 </div>
 	
 	
+	 
 	
+	<div>
+	
+ 
+	
+	<p>
+	
+
+	
+	</p>
+	
+	
+	
+	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	
+	
+	
 	
 	
 	
