@@ -42,7 +42,7 @@
   <section>
   
     <article id="docData">
-      <h1>사진 자료/h1>
+      <h1>사진 자료</h1>
       <p>	                                       
 <br>
   		

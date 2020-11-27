@@ -1,4 +1,4 @@
-package bbsMember;
+package doctable;
 
 public class Bbs {
 	private int bbsID;
@@ -58,7 +58,7 @@ public class Bbs {
 
 	@Override
 	public String toString() {
-		return "Bbs [bbsID=" + bbsID + ", bbsTitle=" + bbsTitle + ", userID=" + userID + ", bbsDate" + bbsDate
+		return "Doctable [bbsID=" + bbsID + ", bbsTitle=" + bbsTitle + ", userID=" + userID + ", bbsDate" + bbsDate
 				+ ", bbsContent" + bbsContent + ", bbsAvailable" + bbsAvailable + "]";
 
 	}

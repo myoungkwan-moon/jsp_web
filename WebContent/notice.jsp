@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width"  >
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/custom.css">
 
 
 </head>
@@ -28,9 +28,9 @@
 	%>
     <!-- 메뉴의 리스트 -->	
     
-    <div><jsp:include page="jsp/menu_common.jsp" flush="false" /></div>
-    	
-              <!-- 검색 메뉴 -->	 
+    <div><jsp:include page="/jsp/menu_common.jsp" flush="false" /></div>
+    
+     <!-- 검색 메뉴 -->	 
 <div id="content-wrap">
   <aside>
     <ul>
@@ -49,20 +49,20 @@
      
     </ul>
   </aside>
+  
   <section> 	
     
     <!-- 공지 게시판 리스트 -->		
     
     <article id="notice"> 		
-	<div class="container">
-		<div class="row">
+	<div class="row">
 			<table class="table table-striped"
 				style="text-align: right; border: 1px solid #dddddd;">
-				<tr>
-					<th style="background-color: #eeeeee; text-align: right">번호</th>
-					<th style="background-color: #eeeeee; text-align: right">제목</th>
-					<th style="background-color: #eeeeee; text-align: right">작성자</th>
-					<th style="background-color: #eeeeee; text-align: right">게시일</th>
+				<tr >
+					<th width="10%" style="background-color: #eeeeee; text-align: center">번호</th>
+					<th width="50%" style="background-color: #eeeeee; text-align: center">제목</th>
+					<th width="20%" style="background-color: #eeeeee; text-align: center">작성자</th>
+					<th width="20%" style="background-color: #eeeeee; text-align: center">게시일</th>
 				</tr>
 					<%
 						NoticeDAO noticeDAO = new NoticeDAO();
@@ -70,10 +70,10 @@
 						for(int i=0; i < list.size(); i++){
 					%>
 						<tr>
-							<td><%= list.get(i).getNoticeID() %></td>
-							<td><a href="noticeView.jsp?noticeID=<%= list.get(i).getNoticeID() %>"><%= list.get(i).getNoticeTitle()%></a></td>
-							<td>관리자</td>
-							<td><%= list.get(i).getNoticeDate().substring(0,11) + list.get(i).getNoticeDate().substring(11,13)+"시" + list.get(i).getNoticeDate().substring(14,16)+"분"%></td>
+							<td width="10%" style=" text-align: center"><%= list.get(i).getNoticeID() %></td>
+							<td width="50%" style=" text-align: center"><a href="noticeView.jsp?noticeID=<%= list.get(i).getNoticeID() %>"><%= list.get(i).getNoticeTitle()%></a></td>
+							<td width="20%" style=" text-align: center">관리자</td>
+							<td width="20%" style=" text-align: center"><%= list.get(i).getNoticeDate().substring(0,11) + list.get(i).getNoticeDate().substring(11,13)+"시" + list.get(i).getNoticeDate().substring(14,16)+"분"%></td>
 						</tr>
 					<%		
 						}
@@ -92,9 +92,11 @@
 				}
 			%>
 			<a href="writeNotice.jsp" class="btn btn-primary pull-right">공지 글쓰기</a>
-		</div>
-	</div>
+		</div> 
 	</article>
+    </section> 	 
+    
+    
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

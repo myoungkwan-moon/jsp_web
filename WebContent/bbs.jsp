@@ -33,8 +33,8 @@
 		}
 	%>
     <!-- 메뉴의 리스트 -->	
+    <div><jsp:include page="/jsp/menu_common.jsp" flush="false" /></div>
     
-    <div><jsp:include page="jsp/menu_common.jsp" flush="false" /></div>
     	
     	
           <!-- 검색 메뉴 -->	 
@@ -65,10 +65,10 @@
 			<table class="table table-striped"
 				style="text-align: right; border: 1px solid #dddddd;">
 				<tr>
-					<th style="background-color: #eeeeee; text-align: right">번호</th>
-					<th style="background-color: #eeeeee; text-align: right">제목</th>
-					<th style="background-color: #eeeeee; text-align: right">작성자</th>
-					<th style="background-color: #eeeeee; text-align: right">작성일</th>
+					<th width="10%" style="background-color: #eeeeee; text-align: center">번호</th>
+					<th width="50%" style="background-color: #eeeeee; text-align: center">제목</th>
+					<th width="20%" style="background-color: #eeeeee; text-align: center">작성자</th>
+					<th width="20%" style="background-color: #eeeeee; text-align: center">게시일</th>
 				</tr>
 					<%
 						BbsDAO bbsDAO = new BbsDAO();
@@ -76,10 +76,10 @@
 						for(int i=0; i < list.size(); i++){
 					%>
 						<tr>
-							<td><%= list.get(i).getBbsID() %></td>
-							<td><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>"><%= list.get(i).getBbsTitle()%></a></td>
-							<td><%= list.get(i).getUserID()%></td>
-							<td><%= list.get(i).getBbsDate().substring(0,11) + list.get(i).getBbsDate().substring(11,13)+"시" + list.get(i).getBbsDate().substring(14,16)+"분"%></td>
+							<td width="10%" style=" text-align: center"><%= list.get(i).getBbsID() %></td>
+							<td width="50%" style=" text-align: center"><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>"><%= list.get(i).getBbsTitle()%></a></td>
+							<td width="20%" style=" text-align: center"><%= list.get(i).getUserID()%></td>
+							<td width="20%" style=" text-align: center"><%= list.get(i).getBbsDate().substring(0,11) + list.get(i).getBbsDate().substring(11,13)+"시" + list.get(i).getBbsDate().substring(14,16)+"분"%></td>
 						</tr>
 					<%		
 						}
@@ -101,6 +101,8 @@
 		</div> 
 	</article>
 	
+  </section> 
+  	 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>

@@ -1,4 +1,4 @@
-package notice;
+package doctable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,13 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class NoticeDAO {
+public class BbsDAO {
 	private Connection conn;
 	private ResultSet rs;
 
-	public NoticeDAO() {
+	public BbsDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/bbs?serverTimezone=UTC";
+			String dbURL = "jdbc:mysql://localhost:3306/BBS?serverTimezone=UTC";
 			String dbID = "siteadmin";
 			String dbPassword="killer";
 			Class.forName("com.mysql.jdbc.Driver");
@@ -33,11 +33,11 @@ public class NoticeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return ""; // µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+		return ""; // ?°?´?„° ë² ì´?Š¤ ?˜¤ë¥?
 	}
 
 	public int getNext() {
-		String SQL = "SELECT noticeID FROM notice ORDER BY noticeID DESC";
+		String SQL = "SELECT bbsID FROM doctable ORDER BY bbsID DESC";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
@@ -48,42 +48,42 @@ public class NoticeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+		return -1; // ?°?´?„° ë² ì´?Š¤ ?˜¤ë¥?
 	}
 
-	public int write(String NoticeTitle, String userID, String NoticeContent) {
-		String SQL = "INSERT INTO notice VALUES(?, ?, ?, ?, ?, ?)";
+	public int write(String bbsTItle, String userID, String bbsContent) {
+		String SQL = "INSERT INTO doctable VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, NoticeTitle);
+			pstmt.setString(2, bbsTItle);
 			pstmt.setString(3, userID);
 			pstmt.setString(4, getDate());
-			pstmt.setString(5, NoticeContent);
+			pstmt.setString(5, bbsContent);
 			pstmt.setInt(6, 1);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+		return -1; // ?°?´?„° ë² ì´?Š¤ ?˜¤ë¥?
 	}
 	
-	public ArrayList<Notice> getList(int pageNumber){
-		String SQL = "SELECT * FROM notice WHERE noticeID < ? AND noticeAvailable = 1 ORDER BY noticeID DESC LIMIT 10";
-		ArrayList<Notice> list = new ArrayList<Notice>();
+	public ArrayList<Bbs> getList(int pageNumber){
+		String SQL = "SELECT * FROM doctable WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
+		ArrayList<Bbs> list = new ArrayList<Bbs>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Notice Notice = new Notice();
-				Notice.setNoticeID(rs.getInt(1));
-				Notice.setNoticeTitle(rs.getString(2));
-				Notice.setUserID(rs.getString(3));
-				Notice.setNoticeDate(rs.getString(4));
-				Notice.setNoticeContent(rs.getString(5));
-				Notice.setNoticeAvailable(rs.getInt(6));
-				list.add(Notice);
+				Bbs bbs = new Bbs();
+				bbs.setBbsID(rs.getInt(1));
+				bbs.setBbsTitle(rs.getString(2));
+				bbs.setUserID(rs.getString(3));
+				bbs.setBbsDate(rs.getString(4));
+				bbs.setBbsContent(rs.getString(5));
+				bbs.setBbsAvailable(rs.getInt(6));
+				list.add(bbs);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class NoticeDAO {
 	}
 	
 	public boolean nextPage(int pageNumber) {
-		String SQL = "SELECT * FROM notice WHERE noticeID < ? AND noticeAvailable = 1 ORDER BY noticeID DESC LIMIT 10";
+		String SQL = "SELECT * FROM doctable WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
@@ -106,21 +106,21 @@ public class NoticeDAO {
 		return false;
 	}
 	
-	public Notice getNotice(int NoticeID){
-		String SQL = "SELECT * FROM notice WHERE noticeID = ?";
+	public Bbs getBbs(int bbsID){
+		String SQL = "SELECT * FROM doctable WHERE bbsID = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, NoticeID);
+			pstmt.setInt(1, bbsID);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				Notice Notice = new Notice();
-				Notice.setNoticeID(rs.getInt(1));
-				Notice.setNoticeTitle(rs.getString(2));
-				Notice.setUserID(rs.getString(3));
-				Notice.setNoticeDate(rs.getString(4));
-				Notice.setNoticeContent(rs.getString(5));
-				Notice.setNoticeAvailable(rs.getInt(6));
-				return Notice;
+				Bbs bbs = new Bbs();
+				bbs.setBbsID(rs.getInt(1));
+				bbs.setBbsTitle(rs.getString(2));
+				bbs.setUserID(rs.getString(3));
+				bbs.setBbsDate(rs.getString(4));
+				bbs.setBbsContent(rs.getString(5));
+				bbs.setBbsAvailable(rs.getInt(6));
+				return bbs;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,30 +128,30 @@ public class NoticeDAO {
 		return null;
 	}
 	
-	public int update(int NoticeID, String NoticeTItle, String NoticeContent) {
-		String SQL = "UPDATE notice SET noticeTitle=?, noticeContent=? WHERE noticeID=?";
+	public int update(int bbsID, String bbsTItle, String bbsContent) {
+		String SQL = "UPDATE doctable SET bbsTitle=?, bbsContent=? WHERE bbsID=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, NoticeTItle);
-			pstmt.setString(2, NoticeContent);
-			pstmt.setInt(3, NoticeID);
+			pstmt.setString(1, bbsTItle);
+			pstmt.setString(2, bbsContent);
+			pstmt.setInt(3, bbsID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+		return -1; // ?°?´?„° ë² ì´?Š¤ ?˜¤ë¥?
 	}
 	
-	public int delete(int NoticeID) {
-		String SQL = "UPDATE notice SET noticeAvailable = 0 WHERE noticeID = ?";
+	public int delete(int bbsID) {
+		String SQL = "UPDATE doctable SET bbsAvailable = 0 WHERE bbsID = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, NoticeID);
+			pstmt.setInt(1, bbsID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+		return -1; // ?°?´?„° ë² ì´?Š¤ ?˜¤ë¥?
 	}
 	
 }

@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/custom.css">
 
 <title>재단법인 웹사이트</title>
 </head>
@@ -31,11 +31,11 @@
 	<!-- 게시판  -->
 		<div class="container">
 		<div class="row">
-			<form action="writeAction.jsp" method="post">
+			<form action="writeActionmemberbbs.jsp" method="post">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd;">
 					<tr>
-						<td colspan="2"	style="background-color: #eeeeee; text-align: center">자유 게시판 글쓰기 양식</td>
+						<td colspan="2"	style="background-color: #eeeeee; text-align: center">회원 게시판 글쓰기 양식</td>
 					</tr>
 					<tr>
 						<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>

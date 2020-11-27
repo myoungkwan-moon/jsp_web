@@ -6,11 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class BbsDAO {
+public class BbsmemberDAO {
 	private Connection conn;
 	private ResultSet rs;
 
-	public BbsDAO() {
+	public BbsmemberDAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/BBS?serverTimezone=UTC";
 			String dbID = "siteadmin";
@@ -33,11 +33,11 @@ public class BbsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return ""; // ?ç∞?ù¥?Ñ∞ Î≤†Ïù¥?ä§ ?ò§Î•?
+		return "";  
 	}
 
 	public int getNext() {
-		String SQL = "SELECT bbsID FROM BBS ORDER BY bbsID DESC";
+		String SQL = "SELECT bbsID FROM memberbbs ORDER BY bbsID DESC";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
@@ -48,11 +48,11 @@ public class BbsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // ?ç∞?ù¥?Ñ∞ Î≤†Ïù¥?ä§ ?ò§Î•?
+		return -1;  
 	}
 
 	public int write(String bbsTItle, String userID, String bbsContent) {
-		String SQL = "INSERT INTO BBS VALUES(?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO memberbbs VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -65,18 +65,18 @@ public class BbsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // ?ç∞?ù¥?Ñ∞ Î≤†Ïù¥?ä§ ?ò§Î•?
+		return -1;  
 	}
 	
-	public ArrayList<Bbs> getList(int pageNumber){
-		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
-		ArrayList<Bbs> list = new ArrayList<Bbs>();
+	public ArrayList<Bbsmember> getList(int pageNumber){
+		String SQL = "SELECT * FROM memberbbs WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
+		ArrayList<Bbsmember> list = new ArrayList<Bbsmember>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Bbs bbs = new Bbs();
+				Bbsmember bbs = new Bbsmember();
 				bbs.setBbsID(rs.getInt(1));
 				bbs.setBbsTitle(rs.getString(2));
 				bbs.setUserID(rs.getString(3));
@@ -92,7 +92,7 @@ public class BbsDAO {
 	}
 	
 	public boolean nextPage(int pageNumber) {
-		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
+		String SQL = "SELECT * FROM memberbbs WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
@@ -106,14 +106,14 @@ public class BbsDAO {
 		return false;
 	}
 	
-	public Bbs getBbs(int bbsID){
-		String SQL = "SELECT * FROM BBS WHERE bbsID = ?";
+	public Bbsmember getBbs(int bbsID){
+		String SQL = "SELECT * FROM memberbbs WHERE bbsID = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, bbsID);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				Bbs bbs = new Bbs();
+				Bbsmember bbs = new Bbsmember();
 				bbs.setBbsID(rs.getInt(1));
 				bbs.setBbsTitle(rs.getString(2));
 				bbs.setUserID(rs.getString(3));
@@ -129,7 +129,7 @@ public class BbsDAO {
 	}
 	
 	public int update(int bbsID, String bbsTItle, String bbsContent) {
-		String SQL = "UPDATE BBS SET bbsTitle=?, bbsContent=? WHERE bbsID=?";
+		String SQL = "UPDATE memberbbs SET bbsTitle=?, bbsContent=? WHERE bbsID=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, bbsTItle);
@@ -139,11 +139,11 @@ public class BbsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // ?ç∞?ù¥?Ñ∞ Î≤†Ïù¥?ä§ ?ò§Î•?
+		return -1;  
 	}
 	
 	public int delete(int bbsID) {
-		String SQL = "UPDATE BBS SET bbsAvailable = 0 WHERE bbsID = ?";
+		String SQL = "UPDATE memberbbs SET bbsAvailable = 0 WHERE bbsID = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, bbsID);
@@ -151,7 +151,7 @@ public class BbsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // ?ç∞?ù¥?Ñ∞ Î≤†Ïù¥?ä§ ?ò§Î•?
+		return -1;  
 	}
 	
 }
